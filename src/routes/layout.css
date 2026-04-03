@@ -1,0 +1,210 @@
+/* Silkscreen */
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap'); 
+/* Playwrite Ireland */
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+IE:wght@100..400&display=swap');
+/* Roboto Mono */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+/* Global */
+:root {
+    --panel-2-rgb: 15 23 42;
+    --panel-3-rgb: 100 50 151;
+    --panel-4-rgb: 24 138 141;
+    --panel-5-rgb: 235 98 63;
+    --panels-bg-rgb: var(--panel-2-rgb);
+    --panels-fade-duration: 140ms;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto Mono";
+    font-size: 20px;
+
+    a {
+        text-decoration: none;
+        color: red;
+
+        &:visited {
+            color: red;
+        }
+    }
+}
+
+/* Layout */
+.panel {
+    min-height: 100vh;
+    width: 100%;
+}
+
+.hero {
+    position: relative;
+    overflow: hidden;
+
+    .bg-video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+
+    .overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+        z-index: 1;
+    }
+
+    button {
+        margin-top: 1rem;
+        padding: 0.6rem 1rem;
+        border: 0;
+        border-radius: 8px;
+        background: #0ea5e9;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:hover {
+            background: #0284c7;
+        }
+    }
+}
+
+.content {
+    display: grid;
+    place-items: center;
+}
+
+:is(.content-1, .content-2, .content-3, .content-4) {
+    background: transparent;
+    color: #fff;
+}
+
+.panels-23.dots-bg {
+    --bg-color: rgb(var(--panels-bg-rgb));
+    transition: background-color var(--panels-fade-duration) linear;
+}
+
+.center-container {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+}
+
+/* Tiles */
+.welcome-tile {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 12px;
+    color: white;
+    h1 {
+        margin: 10px 0px;
+        font-size: 100px;
+        font-family: "Silkscreen", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+}
+
+.content-tile {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 12px;
+    color: white;
+    h2 {
+        font-family: "Playwrite IE", cursive;
+        font-size: 30px;
+    }
+    img {
+        width: 300px;
+        height: 300px;
+        border-radius: 30px;
+    }
+
+    ul {
+        text-align: left;
+        line-height: 1.5;
+        padding-left: 1.25rem;
+    }
+
+    li + li {
+        margin-top: 0.45rem;
+    }
+}
+
+.social-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    &:visited,
+    &:active {
+        color: #fff;
+    }
+
+    &:hover {
+        color: #ffd38a;
+    }
+}
+
+.social-icon {
+    width: 1.3rem;
+    height: 1.3rem;
+    fill: currentColor;
+}
+
+.site-footer {
+    padding: 1.1rem 1.5rem 1.4rem;
+    text-align: center;
+    color: #f3f5f7;
+    background: #0b1120;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    p {
+        margin: 0;
+        font-size: 0.9rem;
+        opacity: 0.9;
+    }
+}
+
+.back-to-start {
+    margin-top: 0.7rem;
+    padding: 0.45rem 0.9rem;
+    border: 0;
+    border-radius: 999px;
+    background: #f59e0b;
+    color: #111827;
+    font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+        background: #fbbf24;
+    }
+}
+
+/* Utilities */
+.dots-bg {
+    --dot-color: rgba(255, 255, 255, 0.2);
+    --dot-size: 2px;
+    --dot-gap: 24px;
+
+    background-color: #0f172a;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(var(--dot-color) var(--dot-size), transparent var(--dot-size));
+    background-size: var(--dot-gap) var(--dot-gap);
+}
