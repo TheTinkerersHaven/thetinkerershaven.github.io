@@ -30,9 +30,18 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      - name: Compute base path
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+
+          # User/org pages (e.g. username.github.io) must be served from root.
+          if [[ "$REPO_NAME" == *.github.io ]]; then
+            echo "BASE_PATH=" >> "$GITHUB_ENV"
+          else
+            echo "BASE_PATH=/$REPO_NAME" >> "$GITHUB_ENV"
+          fi
+
       - name: Build
-        env:
-          BASE_PATH: /${{ github.event.repository.name }}
         run: bun run build
 
       - name: Upload artifact
