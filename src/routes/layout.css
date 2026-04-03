@@ -103,12 +103,23 @@ body {
     padding: 2rem;
     border-radius: 12px;
     color: white;
+    max-width: min(92vw, 920px);
+    margin-inline: auto;
     h1 {
         margin: 10px 0px;
-        font-size: 100px;
+        font-size: clamp(2.4rem, 8vw, 6.25rem);
         font-family: "Silkscreen", sans-serif;
         font-weight: 400;
         font-style: normal;
+        line-height: 1.05;
+        text-wrap: balance;
+    }
+
+    p {
+        max-width: 32ch;
+        margin: 0.5rem auto 0;
+        line-height: 1.5;
+        font-size: clamp(1rem, 2.6vw, 1.25rem);
     }
 }
 
@@ -207,4 +218,36 @@ body {
     background-color: var(--bg-color);
     background-image: radial-gradient(var(--dot-color) var(--dot-size), transparent var(--dot-size));
     background-size: var(--dot-gap) var(--dot-gap);
+}
+
+@media (max-width: 768px) {
+    .hero .overlay {
+        background: rgba(0, 0, 0, 0.52);
+    }
+
+    .center-container {
+        padding: 1rem;
+    }
+
+    .welcome-tile {
+        padding: 1.1rem 0.9rem;
+
+        h1 {
+            font-size: clamp(1.95rem, 10.5vw, 3.2rem);
+            margin: 0.15rem 0 0.65rem;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+
+    .hero button {
+        width: 100%;
+        max-width: 16rem;
+        min-height: 2.75rem;
+        margin-top: 0.95rem;
+        font-size: 1rem;
+    }
 }
