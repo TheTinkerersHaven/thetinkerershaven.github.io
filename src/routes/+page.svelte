@@ -1,8 +1,7 @@
 <script>
     import Icon from '@iconify/svelte';
-    import { base } from '$app/paths';
     import { onMount } from 'svelte';
-    import { fly } from 'svelte/transition';
+    import { fly, blur } from 'svelte/transition';
 
     let showIntro = $state(false);
     let showAbout1 = $state(false);
@@ -26,6 +25,9 @@
     let panel4El;
     /** @type {HTMLDivElement | undefined} */
     let panel5El;
+
+    import bgLoopUrl from "$lib/videos/bgloop.mp4";
+    import pfpUrl from "$lib/images/pfp.jpg";
 
     onMount(() => {
         showIntro = true;
@@ -165,24 +167,26 @@
 </script>
 
 <div class="panel hero">
-    <video class="bg-video" autoplay muted loop playsinline>
-        <source src={`${base}/videos/bgloop.mp4`} type="video/mp4" />
-    </video>
+    {#if showIntro}
+        <video in:blur={{ duration: 1000, opacity: 0 }} class="bg-video" autoplay muted loop playsinline>
+            <source src={bgLoopUrl} type="video/mp4" />
+        </video>
+    {/if}
 
     <div class="overlay"></div>
 
     <div class="center-container">
         <div class="welcome-tile">
             {#if showIntro}
-                <h1 in:fly={{ y: 28, duration: 700, opacity: 0 }}>
+                <h1 in:fly={{ y: 28, duration: 700, delay: 800, opacity: 0 }}>
                     The Tinkerer's Website
                 </h1>
 
-                <p in:fly={{ y: 28, duration: 700, delay: 120, opacity: 0 }}>
+                <p in:fly={{ y: 28, duration: 700, delay: 900, opacity: 0 }}>
                     Have a look inside.
                 </p>
 
-                <button onclick={jumpIn} in:fly={{ y: 28, duration: 700, delay: 240, opacity: 0 }}>
+                <button onclick={jumpIn} in:fly={{ y: 28, duration: 700, delay: 1000, opacity: 0 }}>
                     Jump in
                 </button>
             {/if}
@@ -195,7 +199,7 @@
         <div class="center-container">
             <div class="content-tile" bind:this={aboutTileEl1}>
                 {#if showAbout1}
-                    <img in:fly={{ y: 28, duration: 700, opacity: 0 }} src={`${base}/images/pfp.jpg`} alt="Profile">
+                    <img in:blur={{ duration: 700, opacity: 0 }} src={pfpUrl} alt="Profile">
                     <h2 in:fly={{ y: 28, duration: 700, delay: 120, opacity: 0 }}>About myself</h2>
                     <p in:fly={{ y: 28, duration: 700, delay: 240, opacity: 0 }}>
                         Hi! I’m Greg, a CS student with a passion for all things tech. My happy place is a mix of hobbyist electronics and 3D printing—there’s just something satisfying about seeing a project come to life!
