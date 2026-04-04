@@ -4,6 +4,7 @@
     import { fly, blur } from 'svelte/transition';
 
     let showIntro = $state(false);
+    let heroVideoReady = $state(false);
     let showAbout1 = $state(false);
     let showAbout2 = $state(false);
     let showAbout3 = $state(false);
@@ -164,11 +165,15 @@
     function backToStart() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    function onHeroVideoLoaded() {
+        heroVideoReady = true;
+    }
 </script>
 
 <div class="panel hero">
     {#if showIntro}
-        <video in:blur={{ duration: 1000, opacity: 0 }} class="bg-video" autoplay muted loop playsinline>
+        <video class="bg-video" class:video-ready={heroVideoReady} onloadeddata={onHeroVideoLoaded} autoplay muted loop playsinline>
             <source src={bgLoopUrl} type="video/mp4" />
         </video>
     {/if}
