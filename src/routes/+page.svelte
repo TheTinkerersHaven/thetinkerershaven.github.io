@@ -171,6 +171,12 @@
     }
 </script>
 
+<svelte:head>
+    <link rel="preload" as="image" href={pfpUrl} fetchpriority="high">
+    <link rel="preload" as="video" href={bgLoopUrl} fetchpriority="high">
+    <link rel="preload" as="font" href='https://fonts.googleapis.com/css2?family=Playwrite+IE:wght@100..400&display=swap'>
+</svelte:head>
+
 <div class="panel hero">
     {#if showIntro}
         <video class="bg-video" class:video-ready={heroVideoReady} onloadeddata={onHeroVideoLoaded} autoplay muted loop playsinline>
@@ -204,7 +210,7 @@
         <div class="center-container">
             <div class="content-tile" bind:this={aboutTileEl1}>
                 {#if showAbout1}
-                    <img in:blur={{ duration: 700, opacity: 0 }} src={pfpUrl} alt="Profile">
+                    <img in:blur={{ duration: 700, opacity: 0 }} src={pfpUrl}  alt="Profile">
                     <h2 in:fly={{ y: 28, duration: 700, delay: 120, opacity: 0 }}>About myself</h2>
                     <p in:fly={{ y: 28, duration: 700, delay: 240, opacity: 0 }}>
                         Hi! I’m Greg, a CS student with a passion for all things tech. My happy place is a mix of hobbyist electronics and 3D printing—there’s just something satisfying about seeing a project come to life!
