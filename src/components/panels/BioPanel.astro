@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import FadeInText from "@astroanimate/core/FadeInText";
 
 import ProfilePic from "../../assets/profilepic.jpg";
@@ -8,7 +8,13 @@ import PanelLayout from "../wrappers/PanelLayout.astro";
 
 <PanelLayout data-panel="2" id="bio">
     <FadeInText enhance once delay={0.1}>
-        <Image src={ProfilePic} alt="Profile"></Image>
+        <Picture 
+            src={ProfilePic} 
+            alt="Profile picture"
+            formats={['avif', 'webp']}
+            widths={[300, 400, 500, 600, 700, 800, 900, 1000, ProfilePic.width]}
+            sizes={`(max-width: 768px) 100vw, 800px`}
+        />
     </FadeInText>
     <FadeInText enhance once delay={0.3}>
         <h2>About myself</h2>

@@ -4,6 +4,8 @@ import icon from "astro-icon";
 import { readFileSync, writeFileSync, readdirSync, statSync } from "node:fs";
 import { extname, resolve } from "node:path";
 
+import compress from "astro-compress";
+
 function findHtmlFiles(dir: string): string[] {
     const results: string[] = [];
     for (const entry of readdirSync(dir)) {
@@ -64,5 +66,8 @@ export default defineConfig({
         allowedHosts: ["prodesk"],
     },
 
-    integrations: [icon(), stripCheckmarkComments()],
+    integrations: [
+        icon(),
+        stripCheckmarkComments(),
+        compress({Image: false})],
 });
