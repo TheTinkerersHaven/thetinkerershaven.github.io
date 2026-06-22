@@ -69,5 +69,8 @@ export default defineConfig({
     integrations: [
         icon(),
         stripCheckmarkComments(),
-        compress({Image: false})],
+        compress({
+            Image: false,
+            CSS: false,
+        })],
 });
