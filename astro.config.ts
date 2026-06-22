@@ -5,6 +5,7 @@ import { readFileSync, writeFileSync, readdirSync, statSync } from "node:fs";
 import { extname, resolve } from "node:path";
 
 import compress from "astro-compress";
+import inline from "@playform/inline";
 
 function findHtmlFiles(dir: string): string[] {
     const results: string[] = [];
@@ -72,5 +73,8 @@ export default defineConfig({
         compress({
             Image: false,
             CSS: false,
-        })],
+            JavaScript: true,
+        }),
+        inline(),
+    ],
 });
