@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import FadeInText from "@astroanimate/core/FadeInText";
+
+import ProfilePic from "../../assets/profilepic.jpg";
+import PanelLayout from "../wrappers/PanelLayout.astro";
+---
+
+<PanelLayout data-panel="2" id="bio">
+    <FadeInText enhance once delay={0.1}>
+        <Image src={ProfilePic} alt="Profile"></Image>
+    </FadeInText>
+    <FadeInText enhance once delay={0.3}>
+        <h2>About myself</h2>
+    </FadeInText>
+    <FadeInText enhance once delay={0.5}>
+        <p>
+            Hi! I’m Greg, a CS student with a passion for all things tech. My happy place is a mix of hobbyist
+            electronics and 3D printing—there’s just something satisfying about seeing a project come to life!
+        </p>
+    </FadeInText>
+    <FadeInText enhance once delay={0.7}>
+        <p>
+            I’m also a proud furry, a huge fan of Murder Drones, and an amateur photographer. I love exploring the
+            intersection of art and technology, and I'm glad you're here to see what I'm working on.
+        </p>
+    </FadeInText>
+</PanelLayout>
+
+<style>
+    img {
+        width: 300px;
+        height: 300px;
+        border-radius: 30px;
+    }
+</style>

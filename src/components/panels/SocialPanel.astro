@@ -1,0 +1,64 @@
+---
+import FadeInText from "@astroanimate/core/FadeInText";
+import { Icon } from "astro-icon/components";
+import PanelLayout from "../wrappers/PanelLayout.astro";
+---
+
+<PanelLayout data-panel="5">
+    <FadeInText enhance once delay={0.1}>
+        <h2>Find me online</h2>
+    </FadeInText>
+    <FadeInText enhance once delay={0.3}>
+        <p>Reach out or follow my work on these platforms.</p>
+    </FadeInText>
+    <FadeInText enhance once delay={0.5}>
+        <ul class="social-list">
+            <li>
+                <a
+                    class="social-link"
+                    href="https://github.com/TheTinkerersHaven"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <Icon name="mdi:github" class="social-icon" aria-hidden="true" />
+                    GitHub
+                </a>
+            </li>
+            <li>
+                <a
+                    class="social-link"
+                    href="https://www.youtube.com/@tinkerershaven"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <Icon name="mdi:youtube" class="social-icon" aria-hidden="true" />
+                    YouTube
+                </a>
+            </li>
+        </ul>
+    </FadeInText>
+</PanelLayout>
+
+<style>
+    .social-list {
+        --link-color: white;
+        list-style: none;
+        padding: 0;
+        margin: 1.25rem 0 0;
+        display: grid;
+        gap: 0.75rem;
+    }
+
+    .social-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .social-icon {
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+</style>

@@ -1,0 +1,35 @@
+---
+import FadeInText from "@astroanimate/core/FadeInText";
+import PanelLayout from "../wrappers/PanelLayout.astro";
+---
+
+<PanelLayout data-panel="4">
+    <FadeInText enhance once delay={0.1}>
+        <h2>My hobbies</h2>
+    </FadeInText>
+    <FadeInText enhance once delay={0.3}>
+        <p>I'm someone who just loves to build things and learn how they work.</p>
+    </FadeInText>
+    <FadeInText enhance once delay={0.5}>
+        <p>
+            My hobbies are a mix of photography, gaming, and 3D printing (check out{" "}
+            <a href="https://www.youtube.com/watch?v=1wVxR89_HFU">this SpeedBenchy</a>
+            {" "}for a taste of what I do!).
+        </p>
+    </FadeInText>
+    <FadeInText enhance once delay={0.7}>
+        <p>
+            I'm also big into the DIY electronics scene; I've spent a lot of time with Arduinos and recently leveled up
+            by getting my first custom PCBs made.
+        </p>
+    </FadeInText>
+    <FadeInText enhance once delay={0.9}>
+        <p>
+            Music is my other big escape :) I'm an audiophile at heart with a soft spot for{" "}
+            <a href="https://music.youtube.com/channel/UC6TsngDAS3kvU5cOyO3-hoA">Drum &amp; Bass</a>
+            {" "}and{" "}
+            <a href="https://music.youtube.com/channel/UCKWDG-fRUd4QRuJ4wV5Z49A">furry-made</a>
+            {" "}tracks (whichever genre they are...).
+        </p>
+    </FadeInText>
+</PanelLayout>

@@ -1,0 +1,99 @@
+---
+import CommonHead from "../components/CommonHead.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <CommonHead icon="/favicon.ico" title="My Astro Site" description="A simple Astro site" />
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>
+
+<script>
+    interface RgbColor {
+        r: number;
+        g: number;
+        b: number;
+    }
+
+    function readColor(varName: string): RgbColor {
+        const val = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+        const [r, g, b] = val.split(" ").map(Number);
+        return { r, g, b };
+    }
+
+    const lerp = (a: number, b: number, t: number): number => a + (b - a) * t;
+    const clamp01 = (v: number): number => Math.max(0, Math.min(1, v));
+
+    function setBgColor(colorA: RgbColor, colorB: RgbColor, t: number): void {
+        const ratio = clamp01(t);
+        const r = Math.round(lerp(colorA.r, colorB.r, ratio));
+        const g = Math.round(lerp(colorA.g, colorB.g, ratio));
+        const b = Math.round(lerp(colorA.b, colorB.b, ratio));
+        document.documentElement.style.setProperty("--panels-bg-rgb", `${r} ${g} ${b}`);
+    }
+
+    function initScrollColors(): void {
+        const colors: RgbColor[] = [
+            readColor("--biopanel-rgb"),
+            readColor("--projectpanel-rgb"),
+            readColor("--hobbypanel-rgb"),
+            readColor("--socialpanel-rgb"),
+        ];
+        const panels: NodeListOf<HTMLElement> = document.querySelectorAll("[data-panel]");
+
+        function onScroll(): void {
+            const scrollY: number = window.scrollY;
+            const offsets: number[] = Array.from(panels).map((el: HTMLElement) => el.offsetTop);
+
+            for (let i = 0; i < offsets.length - 1; i++) {
+                if (scrollY >= offsets[i] && scrollY < offsets[i + 1]) {
+                    const t: number = (scrollY - offsets[i]) / Math.max(1, offsets[i + 1] - offsets[i]);
+                    setBgColor(colors[i], colors[i + 1], t);
+                    return;
+                }
+            }
+
+            if (scrollY >= offsets[offsets.length - 1]) {
+                setBgColor(colors[colors.length - 1], colors[colors.length - 1], 0);
+            } else {
+                setBgColor(colors[0], colors[0], 0);
+            }
+        }
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+        onScroll();
+    }
+
+    document.addEventListener("DOMContentLoaded", initScrollColors);
+</script>
+
+<style>
+    :root {
+        --biopanel-rgb: 15 23 42;
+        --projectpanel-rgb: 100 50 151;
+        --hobbypanel-rgb: 24 138 141;
+        --socialpanel-rgb: 235 98 63;
+        --panels-bg-rgb: var(--biopanel-rgb);
+    }
+
+    html,
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+
+        --dot-color: rgba(255, 255, 255, 0.2);
+        --dot-size: 2px;
+        --dot-gap: 24px;
+
+        background-color: rgb(var(--panels-bg-rgb));
+        transition: background-color 140ms linear;
+        background-image: radial-gradient(var(--dot-color) var(--dot-size), transparent var(--dot-size));
+        background-size: var(--dot-gap) var(--dot-gap);
+    }
+</style>

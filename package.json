@@ -1,26 +1,28 @@
 {
-	"name": "sitopersonale",
-	"private": true,
-	"version": "0.0.1",
-	"type": "module",
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"prepare": "svelte-kit sync || echo ''",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
-	},
-	"devDependencies": {
-		"@sveltejs/adapter-static": "^3.0.10",
-		"@sveltejs/kit": "^2.50.2",
-		"@sveltejs/vite-plugin-svelte": "^6.2.4",
-		"svelte": "^5.54.0",
-		"svelte-check": "^4.4.2",
-		"typescript": "^5.9.3",
-		"vite": "^7.3.1"
-	},
-	"dependencies": {
-		"@iconify/svelte": "^5.2.1"
-	}
+  "name": "thetinkerershaven-github-io-astrorewrite",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "check": "biome check",
+    "dev": "astro dev",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astroanimate/core": "^0.1.2",
+    "@fontsource/playwrite-ie": "^5.2.7",
+    "@fontsource/roboto-mono": "^5.2.9",
+    "@fontsource/silkscreen": "^5.2.8",
+    "astro": "^7.0.0",
+    "astro-icon": "^1.1.5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.0",
+    "@iconify-json/mdi": "^1.2.3",
+    "sharp": "^0.35.2"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
 }

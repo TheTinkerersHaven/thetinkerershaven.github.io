@@ -1,0 +1,48 @@
+<footer class="site-footer">
+    <p>
+        Made with ♥️ by{" "}
+        <a style="color: deepskyblue" href="https://github.com/TheTinkerersHaven">TheTinkerersHaven</a>
+        {" "}with{" "}
+        <a style="color: red" href="https://astro.build/">Astro</a>.
+    </p>
+    <p>
+        Go check out <a style="color: rgb(122, 93, 215)" href="https://fleny113.github.io">Fleny113</a>'s website too!
+    </p>
+    <button type="button" class="back-to-start" onclick="window.location.href='#'">Back to start</button>
+</footer>
+
+<style>
+    footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        background-color: rgb(20, 20, 20, 0.8);
+        color: white;
+        font-family: var(--font-paragraph), sans-serif;
+
+        p {
+            margin: 0.5rem 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            background-color: #0ea5e9;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #0284c7;
+            }
+        }
+    }
+</style>

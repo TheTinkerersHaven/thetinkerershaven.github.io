@@ -1,0 +1,49 @@
+<div class="panel" {...Astro.props}>
+    <div class="content-tile">
+        <slot />
+    </div>
+</div>
+
+<style>
+    .panel {
+        --link-color: #f59e0b;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 2rem;
+        background: transparent;
+        color: white;
+
+        h2 {
+            font-family: var(--font-heading), cursive;
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-wrap: balance;
+        }
+
+        p,
+        li,
+        a {
+            font-family: var(--font-paragraph), sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+        }
+
+        p {
+            line-height: 1.6;
+            text-wrap: balance;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+    }
+
+    .content-tile {
+        width: clamp(10vw, 60vw, 100%);
+        margin: 0 auto;
+    }
+</style>

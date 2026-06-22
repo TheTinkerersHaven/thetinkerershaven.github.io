@@ -1,0 +1,47 @@
+---
+import FadeInText from "@astroanimate/core/FadeInText";
+import PanelLayout from "../wrappers/PanelLayout.astro";
+---
+
+<PanelLayout data-panel="3">
+    <FadeInText enhance once delay={0.1}>
+        <h2>My projects</h2>
+    </FadeInText>
+    <FadeInText enhance once delay={0.3}>
+        <p>The main projects I've made are</p>
+    </FadeInText>
+    <FadeInText enhance once delay={0.5}>
+        <ul>
+            <li>
+                <a href="https://github.com/TheTinkerersHaven/TerraLevel">TerraLevel</a>, a platformer game made in
+                Godot engine;
+            </li>
+            <li>
+                <a href="https://github.com/TheTinkerersHaven/SpinKeys-Hackpad">SpinKeys</a>, a hackpad made for Hack
+                Club Blueprint (WIP);
+            </li>
+            <li>
+                <a href="https://github.com/TheTinkerersHaven/CitySim">CitySim</a>{" "}
+                (in collaboration with <a href="https://github.com/Fleny113">@Fleny113</a>), a simple TUI-based city
+                simulator;
+            </li>
+            <li>
+                <a href="https://github.com/TheTinkerersHaven/RestaurantSimulator26">Restaurant Simulator 26</a>{" "}
+                (in collaboration with <a href="https://github.com/Fleny113">@Fleny113</a>), a Java Swing-based GUI
+                restaurant simulator.
+            </li>
+        </ul>
+    </FadeInText>
+</PanelLayout>
+
+<style>
+    ul {
+        text-align: left;
+        line-height: 1.5;
+        padding-left: 1.25rem;
+    }
+
+    li + li {
+        margin-top: 0.45rem;
+    }
+</style>

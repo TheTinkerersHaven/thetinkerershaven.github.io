@@ -1,0 +1,22 @@
+---
+import { Font } from "astro:assets";
+
+const { title, description, icon } = Astro.props;
+
+export type Props = {
+    title: string;
+    description: string;
+    icon: string;
+};
+---
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<link rel="icon" href={icon} type="image/icon">
+<meta name="generator" content={Astro.generator}>
+<meta name="description" content={description}>
+<title>{title}</title>
+
+<Font cssVariable="--font-title" />
+<Font cssVariable="--font-paragraph" />
+<Font cssVariable="--font-heading" />
