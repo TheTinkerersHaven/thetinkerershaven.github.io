@@ -5,10 +5,12 @@ import CommonHead from "../components/CommonHead.astro";
 <!doctype html>
 <html lang="en">
     <head>
-        <CommonHead icon="/favicon.ico" title="My Astro Site" description="A simple Astro site" />
+        <CommonHead icon="/favicon.jpg" title="My Astro Site" description="A simple Astro site" />
     </head>
     <body>
-        <slot />
+        <main>
+            <slot />
+        </main>
     </body>
 </html>
 

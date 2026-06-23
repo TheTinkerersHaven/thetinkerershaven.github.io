@@ -1,9 +1,11 @@
 ---
 import bgloop from "../../assets/bgloop.mp4";
+import bgloopfallback from "../../assets/bgloopfallback.mp4";
 ---
 
-<video class="bg-video" autoplay muted loop playsinline aria-hidden preload="metadata">
+<video class="bg-video" autoplay muted loop playsinline aria-hidden="true" preload="metadata">
     <source src={bgloop} type="video/mp4">
+    <source src={bgloopfallback} type="video/mp4">
 </video>
 <div class="center-container">
     <div class="welcome-tile">
@@ -87,13 +89,13 @@ import bgloop from "../../assets/bgloop.mp4";
             padding: 0.6rem 1rem;
             border: 0;
             border-radius: 8px;
-            background: #0ea5e9;
+            background: #7b0d91;
             color: white;
             font-weight: 600;
             cursor: pointer;
 
             &:hover {
-                background: #0284c7;
+                background: #7b0d91cc;
             }
         }
     }
