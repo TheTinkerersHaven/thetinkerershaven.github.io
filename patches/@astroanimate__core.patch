@@ -1,0 +1,45 @@
+diff --git a/dist/components/FadeInText/FadeInText.astro b/dist/components/FadeInText/FadeInText.astro
+index 0e17777b14678bb4a1c0067c5fc49a4199c1442b..86338d4e13b163e0326bba693ebeacdaf117a54f 100644
+--- a/dist/components/FadeInText/FadeInText.astro
++++ b/dist/components/FadeInText/FadeInText.astro
+@@ -119,7 +119,6 @@ const {
+   ...rest
+ } = Astro.props as Props;
+ ---
+-
+ <style>
+   /*
+    * Separate CSS paths for enhance=false vs enhance=true.
+@@ -203,12 +202,6 @@ const {
+     }
+   }
+ </style>
+-
+-<!-- ✅ C1: Slot content always present in HTML — meaningful without JS.
+-     ✅ C4: No import.meta.env.DEV — identical in dev, build, and preview.
+-     ✅ C5: No astro:* events. Standard data attributes only.
+-     {...rest} forwards id, aria-label, role, tabindex, data-*, etc.
+-     Style is a single inline string — no stray newlines in HTML output. -->
+ <Tag
+   {...rest}
+   class:list={["astro-fade-in-text", className]}
+@@ -217,17 +210,9 @@ const {
+   data-once={once ? "true" : "false"}
+   data-margin={inViewMargin}
+   style={`--fit-duration:${duration}s;--fit-delay:${delay}s;--fit-easing:${easing};--fit-blur:${blur};--fit-y-offset:${yOffset}px`}
+->
+-  <!-- ✅ C8: Slot always rendered. JS only adds timing/trigger control. -->
+-  <slot />
+-</Tag>
+-
+-<!-- ✅ C2: Script emitted ONLY when enhance=true. No unconditional scripts.
+-     is:inline is required — Astro does NOT bundle <script> tags sourced
+-     from node_modules. is:inline embeds the script verbatim in HTML output,
+-     guaranteeing it ships regardless of the consumer's build configuration. -->
++><slot /></Tag>
+ {enhance && (
+-  <script is:inline>
++  <script>
+     (function () {
+       // ✅ C6: SSR guard — bail immediately if not in a browser context
+       if (typeof window === "undefined") return;
