@@ -47,3 +47,43 @@
         margin: 0 auto;
     }
 </style>
+
+<style is:global>
+    .tooltip {
+        position: relative;
+        cursor: help;
+        color: var(--link-color);
+    }
+
+    .tooltiptext {
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 50%;
+        translate: -50% 0;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(4px);
+        color: #fff;
+        padding: 0.4rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-family: var(--font-paragraph, sans-serif);
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 150ms ease;
+    }
+
+    .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        translate: -50% 0;
+        border: 5px solid transparent;
+        border-top-color: rgba(0, 0, 0, 0.85);
+    }
+
+    .tooltip:hover .tooltiptext {
+        opacity: 1;
+    }
+</style>

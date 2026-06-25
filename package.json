@@ -1,16 +1,17 @@
 {
-  "name": "thetinkerershaven-github-io-astrorewrite",
+  "name": "thetinkerershaven-github-io",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
     "astro": "astro",
     "build": "astro build",
     "check": "biome check",
+    "check:fix": "biome check --write",
+    "check:fixall": "biome check --write --unsafe",
     "dev": "astro dev",
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astroanimate/core": "^0.1.2",
     "astro": "^7.0.0",
     "astro-icon": "^1.1.5"
   },

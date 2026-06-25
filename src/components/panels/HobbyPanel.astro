@@ -1,35 +1,74 @@
 ---
-import FadeInText from "@astroanimate/core/FadeInText";
 import PanelLayout from "../wrappers/PanelLayout.astro";
 ---
 
 <PanelLayout data-panel="4">
-    <FadeInText enhance once delay={0.1}>
-        <h2>My hobbies</h2>
-    </FadeInText>
-    <FadeInText enhance once delay={0.3}>
-        <p>I'm someone who just loves to build things and learn how they work.</p>
-    </FadeInText>
-    <FadeInText enhance once delay={0.5}>
-        <p>
-            My hobbies are a mix of photography, gaming, and 3D printing (check out{" "}
-            <a href="https://www.youtube.com/watch?v=1wVxR89_HFU">this SpeedBenchy</a>
-            {" "}for a taste of what I do!).
-        </p>
-    </FadeInText>
-    <FadeInText enhance once delay={0.7}>
-        <p>
-            I'm also big into the DIY electronics scene; I've spent a lot of time with Arduinos and recently leveled up
-            by getting my first custom PCBs made.
-        </p>
-    </FadeInText>
-    <FadeInText enhance once delay={0.9}>
-        <p>
-            Music is my other big escape :) I'm an audiophile at heart with a soft spot for{" "}
-            <a href="https://music.youtube.com/channel/UC6TsngDAS3kvU5cOyO3-hoA">Drum &amp; Bass</a>
-            {" "}and{" "}
-            <a href="https://music.youtube.com/channel/UCKWDG-fRUd4QRuJ4wV5Z49A">furry-made</a>
-            {" "}tracks (whichever genre they are...).
-        </p>
-    </FadeInText>
+    <h2 class="fade-in" style="--delay: 0.1s">My hobbies</h2>
+    <p class="fade-in" style="--delay: 0.2s">
+        I'm someone who just loves to <span class="tooltip">build<span class="tooltiptext">break*</span></span> things
+        and learn how they work.
+    </p>
+    <p class="fade-in" style="--delay: 0.3s">
+        My hobbies are a mix of photography, gaming, and 3D printing (check out
+        <a href="https://www.youtube.com/watch?v=1wVxR89_HFU">this SpeedBenchy</a>
+        for a taste of what I do!).
+    </p>
+    <p class="fade-in" style="--delay: 0.4s">
+        I'm also big into the DIY electronics scene; I've spent a lot of time with Arduinos and recently leveled up by
+        getting
+        <span class="tooltip">my first custom PCBs<span class="tooltiptext">we already talked about this</span></span>
+        made.
+    </p>
+    <p class="fade-in" style="--delay: 0.5s">
+        Music is my other big escape :) I'm an
+        <span class="tooltip">audiophile<span class="tooltiptext">on a budget</span></span>
+        at heart with a soft spot for
+        <span class="tooltip"
+            ><a href="https://music.youtube.com/channel/UC6TsngDAS3kvU5cOyO3-hoA">Drum &amp; Bass</a
+            ><span class="tooltiptext">*insert intense drum sounds here*</span></span
+        >
+        and
+        <span class="tooltip"
+            ><a href="https://music.youtube.com/channel/UCKWDG-fRUd4QRuJ4wV5Z49A">furry-made</a
+            ><span class="tooltiptext">Ivycomb, fur:trash, Verplex... they sure do make some kind of music</span></span
+        >
+        tracks.
+    </p>
 </PanelLayout>
+
+<style>
+    .fade-in {
+        opacity: 0;
+        filter: blur(6px);
+        transform: translateY(30px);
+    }
+
+    .fade-in.visible {
+        animation: hobbyFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) var(--delay) both;
+    }
+
+    @keyframes hobbyFadeIn {
+        from {
+            opacity: 0;
+            filter: blur(6px);
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .fade-in {
+            opacity: 1;
+            filter: none;
+            transform: none;
+        }
+        .fade-in.visible {
+            animation: none;
+        }
+    }
+</style>
+}

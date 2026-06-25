@@ -1,40 +1,78 @@
 ---
-import FadeInText from "@astroanimate/core/FadeInText";
 import PanelLayout from "../wrappers/PanelLayout.astro";
 ---
 
 <PanelLayout data-panel="3">
-    <FadeInText enhance once delay={0.1}>
-        <h2>My projects</h2>
-    </FadeInText>
-    <FadeInText enhance once delay={0.3}>
-        <p>The main projects I've made are</p>
-    </FadeInText>
-    <FadeInText enhance once delay={0.5}>
+    <h2 class="fade-in" style="--delay: 0.1s">My projects</h2>
+    <p class="fade-in" style="--delay: 0.2s">The main projects I've made are</p>
+    <div class="fade-in" style="--delay: 0.3s">
         <ul>
             <li>
                 <a href="https://github.com/TheTinkerersHaven/TerraLevel">TerraLevel</a>, a platformer game made in
-                Godot engine;
+                <span class="tooltip">Godot<span class="tooltiptext">godot > unity</span></span>
+                engine;
             </li>
             <li>
                 <a href="https://github.com/TheTinkerersHaven/SpinKeys-Hackpad">SpinKeys</a>, a hackpad made for Hack
-                Club Blueprint (WIP);
+                Club Blueprint
+                <span class="tooltip"
+                    >(WIP)<span class="tooltiptext">i broke three PCBs and one Seeed Xiao, i am so done</span></span
+                >;
             </li>
             <li>
-                <a href="https://github.com/TheTinkerersHaven/CitySim">CitySim</a>{" "}
-                (in collaboration with <a href="https://github.com/Fleny113">@Fleny113</a>), a simple TUI-based city
-                simulator;
+                <a href="https://github.com/TheTinkerersHaven/CitySim">CitySim</a>
+                (in collaboration with
+                <span class="tooltip"
+                    ><a href="https://github.com/Fleny113">@Fleny113</a><span class="tooltiptext">cool guy</span></span
+                >), a simple TUI-based city simulator;
             </li>
             <li>
-                <a href="https://github.com/TheTinkerersHaven/RestaurantSimulator26">Restaurant Simulator 26</a>{" "}
-                (in collaboration with <a href="https://github.com/Fleny113">@Fleny113</a>), a Java Swing-based GUI
-                restaurant simulator.
+                <a href="https://github.com/TheTinkerersHaven/RestaurantSimulator26">Restaurant Simulator 26</a>
+                (in collaboration with
+                <span class="tooltip"
+                    ><a href="https://github.com/Fleny113">@Fleny113</a
+                    ><span class="tooltiptext">cool guy pt.2</span></span
+                >), a Java Swing-based GUI restaurant simulator.
             </li>
         </ul>
-    </FadeInText>
+    </div>
 </PanelLayout>
 
 <style>
+    .fade-in {
+        opacity: 0;
+        filter: blur(6px);
+        transform: translateY(30px);
+    }
+
+    .fade-in.visible {
+        animation: projectFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) var(--delay) both;
+    }
+
+    @keyframes projectFadeIn {
+        from {
+            opacity: 0;
+            filter: blur(6px);
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .fade-in {
+            opacity: 1;
+            filter: none;
+            transform: none;
+        }
+        .fade-in.visible {
+            animation: none;
+        }
+    }
+
     ul {
         text-align: left;
         line-height: 1.5;

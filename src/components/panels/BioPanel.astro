@@ -1,36 +1,49 @@
 ---
 import { Picture } from "astro:assets";
-import FadeInText from "@astroanimate/core/FadeInText";
 
 import ProfilePic from "../../assets/profilepic.jpg";
 import PanelLayout from "../wrappers/PanelLayout.astro";
 ---
 
 <PanelLayout data-panel="2" id="bio">
-    <FadeInText enhance once delay={0.1}>
+    <div class="fade-in" style="--delay: 0.1s">
         <Picture
             src={ProfilePic}
-            alt="Profile picture"
+            alt="Greg PFP"
             formats={['avif', 'webp']}
             widths={[300, 400, 500, 600, 700, 800, 900, 1000, ProfilePic.width]}
             sizes={`(max-width: 768px) 100vw, 800px`}
         />
-    </FadeInText>
-    <FadeInText enhance once delay={0.3}>
-        <h2>About myself</h2>
-    </FadeInText>
-    <FadeInText enhance once delay={0.5}>
-        <p>
-            Hi! I’m Greg, a CS student with a passion for all things tech. My happy place is a mix of hobbyist
-            electronics and 3D printing—there’s just something satisfying about seeing a project come to life!
-        </p>
-    </FadeInText>
-    <FadeInText enhance once delay={0.7}>
-        <p>
-            I’m also a proud furry, a huge fan of Murder Drones, and an amateur photographer. I love exploring the
-            intersection of art and technology, and I'm glad you're here to see what I'm working on.
-        </p>
-    </FadeInText>
+    </div>
+    <h2 class="fade-in" style="--delay: 0.1s">About myself</h2>
+    <p class="fade-in" style="--delay: 0.2s">
+        Hi! I’m Greg, a Computer Science student with a passion for all things tech.
+    </p>
+    <p class="fade-in" style="--delay: 0.3s">
+        My happy place is a mix of
+        <span class="tooltip">hobbyist electronics<span class="tooltiptext">real electronics are scary</span></span>
+        and 3D printing; there’s just something satisfying about seeing a project come to life!
+    </p>
+    <p class="fade-in" style="--delay: 0.4s">
+        I’m also a proud <span class="tooltip">furry<span class="tooltiptext">:3</span></span>, a huge fan of
+        <span class="tooltip"
+            >Murder Drones<span class="tooltiptext"
+                >if you couldn't tell from the pfp, also we need a second season Liam</span
+            ></span
+        >, and an
+        <a href="https://twolenstales.altervista.org" target="_blank" rel="noopener noreferrer"
+            >amateur photographer</a
+        >.
+    </p>
+    <p class="fade-in" style="--delay: 0.5s">
+        I love exploring the intersection of art and technology, and I'm glad you're here to see what I'm working on.
+    </p>
+    <p class="fade-in" style="--delay: 0.6s">
+        You can find me around as
+        <span class="tooltip">TheTinkerersHaven<span class="tooltiptext">serious stuff</span></span>
+        or
+        <span class="tooltip">Greg7327<span class="tooltiptext">gaming stuff</span></span>, usually.
+    </p>
 </PanelLayout>
 
 <style>
@@ -38,5 +51,39 @@ import PanelLayout from "../wrappers/PanelLayout.astro";
         width: 300px;
         height: 300px;
         border-radius: 30px;
+    }
+
+    .fade-in {
+        opacity: 0;
+        filter: blur(6px);
+        transform: translateY(30px);
+    }
+
+    .fade-in.visible {
+        animation: bioFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) var(--delay) both;
+    }
+
+    @keyframes bioFadeIn {
+        from {
+            opacity: 0;
+            filter: blur(6px);
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .fade-in {
+            opacity: 1;
+            filter: none;
+            transform: none;
+        }
+        .fade-in.visible {
+            animation: none;
+        }
     }
 </style>

@@ -3,10 +3,12 @@ import bgloop from "../../assets/bgloop.mp4";
 import bgloopfallback from "../../assets/bgloopfallback.mp4";
 ---
 
-<video class="bg-video" autoplay muted loop playsinline aria-hidden="true" preload="metadata">
-    <source src={bgloop} type="video/mp4">
-    <source src={bgloopfallback} type="video/mp4">
-</video>
+<template id="video-template">
+    <video class="bg-video" autoplay muted loop playsinline aria-hidden="true" preload="metadata">
+        <source src={bgloop} type="video/mp4">
+        <source src={bgloopfallback} type="video/mp4">
+    </video>
+</template>
 <div class="center-container">
     <div class="welcome-tile">
         <h1>The Tinkerer's Website</h1>
@@ -16,18 +18,28 @@ import bgloopfallback from "../../assets/bgloopfallback.mp4";
 </div>
 
 <script>
-    const video = document.querySelector<HTMLVideoElement>(".bg-video");
-    if (video) {
-        if (video.readyState >= 2) {
-            video.classList.add("video-ready");
+    const template = document.querySelector<HTMLTemplateElement>("#video-template");
+
+    if (template && HTMLVideoElement) {
+        const canPlay = document.createElement("video").canPlayType("video/mp4");
+
+        if (canPlay !== "") {
+            const video = template.content.firstElementChild as HTMLVideoElement;
+            template.replaceWith(video);
+            video.load();
+
+            function heroReady() {
+                video.classList.add("video-ready");
+                document.querySelector(".center-container")?.classList.add("hero-ready");
+            }
+
+            if (video.readyState >= 2) {
+                heroReady();
+            } else {
+                video.addEventListener("loadeddata", heroReady, { once: true });
+            }
         } else {
-            video.addEventListener(
-                "loadeddata",
-                () => {
-                    video.classList.add("video-ready");
-                },
-                { once: true },
-            );
+            template.remove();
         }
     }
 </script>
@@ -71,7 +83,10 @@ import bgloopfallback from "../../assets/bgloopfallback.mp4";
         max-width: min(92vw, 920px);
         z-index: 1;
         opacity: 0;
-        animation: fadeInUp 800ms ease 1.2s forwards;
+    }
+
+    .hero-ready .welcome-tile {
+        animation: fadeInUp 800ms ease forwards;
 
         h1 {
             margin: 10px 0 0 0;

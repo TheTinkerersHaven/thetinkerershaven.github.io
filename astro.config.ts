@@ -3,6 +3,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
+    compressHTML: true,
     fonts: [
         {
             provider: fontProviders.fontsource(),
@@ -22,7 +23,7 @@ export default defineConfig({
     ],
     server: {
         host: true,
-        allowedHosts: ["prodesk"],
+        allowedHosts: ["prodesk", "vitedev.gregweb.it.eu.org"],
     },
     integrations: [icon()],
     build: {

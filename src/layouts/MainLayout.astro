@@ -5,7 +5,11 @@ import CommonHead from "../components/CommonHead.astro";
 <!doctype html>
 <html lang="en">
     <head>
-        <CommonHead icon="/favicon.jpg" title="My Astro Site" description="A simple Astro site" />
+        <CommonHead
+            icon="/favicon.jpg"
+            title="The Tinkerer's Website"
+            description="The Tinkerer's Haven official website"
+        />
     </head>
     <body>
         <main>
@@ -71,7 +75,29 @@ import CommonHead from "../components/CommonHead.astro";
         onScroll();
     }
 
-    document.addEventListener("DOMContentLoaded", initScrollColors);
+    function initFadeInObserver(): void {
+        const observer = new IntersectionObserver(
+            (entries: IntersectionObserverEntry[]) => {
+                for (const entry of entries) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                }
+            },
+            { rootMargin: "0px 0px -40px 0px" },
+        );
+
+        const els: NodeListOf<Element> = document.querySelectorAll(".fade-in");
+        for (const el of els) {
+            observer.observe(el);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        initScrollColors();
+        initFadeInObserver();
+    });
 </script>
 
 <style>

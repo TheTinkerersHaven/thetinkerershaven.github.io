@@ -1,17 +1,12 @@
 ---
-import FadeInText from "@astroanimate/core/FadeInText";
 import { Icon } from "astro-icon/components";
 import PanelLayout from "../wrappers/PanelLayout.astro";
 ---
 
 <PanelLayout data-panel="5">
-    <FadeInText enhance once delay={0.1}>
-        <h2>Find me online</h2>
-    </FadeInText>
-    <FadeInText enhance once delay={0.3}>
-        <p>Reach out or follow my work on these platforms.</p>
-    </FadeInText>
-    <FadeInText enhance once delay={0.5}>
+    <h2 class="fade-in" style="--delay: 0.1s">Find me online</h2>
+    <p class="fade-in" style="--delay: 0.2s">Reach out or follow my work on these platforms.</p>
+    <div class="fade-in" style="--delay: 0.3s">
         <ul class="social-list">
             <li>
                 <a
@@ -36,10 +31,44 @@ import PanelLayout from "../wrappers/PanelLayout.astro";
                 </a>
             </li>
         </ul>
-    </FadeInText>
+    </div>
 </PanelLayout>
 
 <style>
+    .fade-in {
+        opacity: 0;
+        filter: blur(6px);
+        transform: translateY(30px);
+    }
+
+    .fade-in.visible {
+        animation: socialFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) var(--delay) both;
+    }
+
+    @keyframes socialFadeIn {
+        from {
+            opacity: 0;
+            filter: blur(6px);
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .fade-in {
+            opacity: 1;
+            filter: none;
+            transform: none;
+        }
+        .fade-in.visible {
+            animation: none;
+        }
+    }
+
     .social-list {
         --link-color: white;
         list-style: none;
