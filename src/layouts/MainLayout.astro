@@ -39,7 +39,7 @@ import CommonHead from "../components/CommonHead.astro";
         const r = Math.round(lerp(colorA.r, colorB.r, ratio));
         const g = Math.round(lerp(colorA.g, colorB.g, ratio));
         const b = Math.round(lerp(colorA.b, colorB.b, ratio));
-        document.documentElement.style.setProperty("--panels-bg-rgb", `${r} ${g} ${b}`);
+        document.body.style.setProperty("--panels-bg-rgb", `${r} ${g} ${b}`);
     }
 
     function initScrollColors(): void {
@@ -101,16 +101,21 @@ import CommonHead from "../components/CommonHead.astro";
 </script>
 
 <style>
+    html {
+        width: 100%;
+        height: 100%;
+    }
+
     :root {
-        --biopanel-rgb: 15 23 42;
-        --projectpanel-rgb: 100 50 151;
-        --hobbypanel-rgb: 24 138 141;
-        --socialpanel-rgb: 235 98 63;
+        --biopanel-rgb: 30 50 120;
+        --projectpanel-rgb: 60 30 100;
+        --hobbypanel-rgb: 120 60 150;
+        --socialpanel-rgb: 150 100 50;
         --panels-bg-rgb: var(--biopanel-rgb);
     }
 
-    html,
     body {
+        overflow-x: hidden;
         margin: 0;
         width: 100%;
         height: 100%;

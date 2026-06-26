@@ -43,8 +43,17 @@
     }
 
     .content-tile {
-        width: clamp(10vw, 60vw, 100%);
+        width: 100%;
+        max-width: 70vw;
         margin: 0 auto;
+        padding: 0 1rem;
+        box-sizing: border-box;
+    }
+
+    @media (max-width: 768px) {
+        .content-tile {
+            max-width: 95vw;
+        }
     }
 </style>
 
@@ -56,6 +65,7 @@
     }
 
     .tooltiptext {
+        display: block;
         position: absolute;
         bottom: calc(100% + 8px);
         left: 50%;
@@ -67,7 +77,9 @@
         border-radius: 6px;
         font-size: 0.8rem;
         font-family: var(--font-paragraph, sans-serif);
-        white-space: nowrap;
+        white-space: normal;
+        width: max-content;
+        max-width: 50vw;
         pointer-events: none;
         opacity: 0;
         transition: opacity 150ms ease;
