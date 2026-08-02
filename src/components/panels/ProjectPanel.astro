@@ -1,89 +1,149 @@
 ---
 import PanelLayout from "../wrappers/PanelLayout.astro";
+import ProjectTile from "../ProjectTile.astro";
 ---
 
 <PanelLayout data-panel="3">
     <h2 class="fade-in" style="--delay: 0.1s">My projects</h2>
-    <p class="fade-in" style="--delay: 0.2s">These are some of the projects I've worked on:</p>
-    <div class="fade-in" id="projects" style="--delay: 0.3s">
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Made for</th>
-                <th>Using</th>
-            </tr>
-            <tr>
-                <td>
-                    <a href="https://github.com/TheTinkerersHaven/thetinkerershaven.github.io"
-                        >thetinkerershaven.github.io</a
-                    >
-                </td>
-                <td>This exact website! First written in Svelte, and then remade into what it is now.</td>
-                <td>Myself</td>
-                <td style="color: #ff5d01; font-weight: 600">Astro</td>
-            </tr>
-            <tr>
-                <td><a href="https://github.com/PlanckTeam/Space4Arch">Space4Arch</a></td>
-                <td>
-                    Archeology app, innovation project for Planck Team (FIRST Lego League 2025-2026) (in collaboration
-                    with
-                    <span class="tooltip"
-                        ><a href="https://github.com/Fleny113">@Fleny113</a
-                        ><span class="tooltiptext">cool guy</span></span
-                    >)
-                </td>
-                <td>Planck Team</td>
-                <td style="color: #06d1f2; font-weight: 600">Expo (React Native)</td>
-            </tr>
-            <tr>
-                <td><a href="https://github.com/PlanckTeam/planckteam.github.io">planckteam.github.io</a></td>
-                <td>Website for Planck Team (FIRST Lego League & FIRST Tech Challenge)</td>
-                <td>Planck Team</td>
-                <td style="color: #ff5d01; font-weight: 600">Astro</td>
-            </tr>
-            <tr>
-                <td><a href="https://github.com/TheTinkerersHaven/TerraLevel">TerraLevel</a></td>
-                <td>Platformer tower-climb game made for Hack Club Daydream.</td>
-                <td>Hack Club Daydream</td>
-                <td style="color: #5a9fd0; font-weight: 600">Godot</td>
-            </tr>
-            <tr>
-                <td><a href="https://github.com/TheTinkerersHaven/SpinKeys-Hackpad">SpinKeys</a></td>
-                <td>5-key hackpad with two dials made for Hack Club Blueprint.</td>
-                <td>Hack Club Blueprint</td>
-                <td>
-                    <span style="color: #3dd4c0; font-weight: 600">KiCad</span>,
-                    <span style="color: #c084fc; font-weight: 600">Vial</span>
-                </td>
-            </tr>
-            <tr>
-                <td><a href="https://github.com/TheTinkerersHaven/CitySim">CitySim</a></td>
-                <td>
-                    Simple TUI-based city simulator (in collaboration with
-                    <span class="tooltip"
-                        ><a href="https://github.com/Fleny113">@Fleny113</a
-                        ><span class="tooltiptext">cool guy pt.2</span></span
-                    >)
-                </td>
-                <td>School</td>
-                <td style="color: #6aafff; font-weight: 600">C++</td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="https://github.com/TheTinkerersHaven/RestaurantSimulator26">Restaurant Simulator 26</a>
-                </td>
-                <td>
-                    Java Swing-based GUI restaurant simulator (in collaboration with
-                    <span class="tooltip"
-                        ><a href="https://github.com/Fleny113">@Fleny113</a
-                        ><span class="tooltiptext">did i already tell you he's a cool guy?</span></span
-                    >)
-                </td>
-                <td>School</td>
-                <td style="color: #ff9724; font-weight: 600">Java</td>
-            </tr>
-        </table>
+    <p class="fade-in" style="--delay: 0.2s">
+        These are some of the projects I've worked on:
+    </p>
+    <div class="fade-in" id="projects-grid" style="--delay: 0.3s">
+        <ProjectTile
+            link="https://github.com/TheTinkerersHaven/minichat"
+            name="MiniChat"
+            madeWith="Flutter"
+            madeFor="PoliCollege"
+            madeForLink="https://www.policollege.polimi.it"
+            wide
+            style={{ "--delay": "0.1s" }}
+        >
+            <p slot="description">
+                A Flutter chat client for LLMs with OpenAI-compatible APIs,
+                featuring local speech recognition via Whisper.
+            </p>
+        </ProjectTile>
+        <ProjectTile
+            link="https://github.com/TheTinkerersHaven/thetinkerershaven.github.io"
+            name="thetinkerershaven.github.io"
+            madeWith="Astro"
+            madeFor="Myself"
+            wide
+            style={{ "--delay": "0.2s" }}
+        >
+            <p slot="description">
+                This exact website! First written in Svelte, and then remade
+                into what it is now.
+            </p>
+        </ProjectTile>
+        <ProjectTile
+            link="https://github.com/PlanckTeam/planckteam.github.io"
+            name="planckteam.github.io"
+            madeWith="Astro"
+            madeFor="Planck Team"
+            madeForLink="https://planckteam.github.io"
+            style={{ "--delay": "0.3s" }}
+        >
+            <p slot="description">
+                Website for Planck Team (FIRST Lego League &amp; FIRST Tech
+                Challenge)
+            </p>
+        </ProjectTile>
+        <ProjectTile
+            link="https://github.com/PlanckTeam/Space4Arch"
+            name="Space4Arch"
+            madeWith="Expo (React Native)"
+            madeFor="Planck Team"
+            madeForLink="https://planckteam.github.io"
+            style={{ "--delay": "0.4s" }}
+        >
+            <p slot="description">
+                Archeology app, innovation project for Planck Team (FIRST Lego
+                League 2025-2026) (in collaboration with
+                <span class="tooltip"
+                    ><a href="https://github.com/Fleny113">@Fleny113</a><span
+                        class="tooltiptext">cool guy</span
+                    ></span
+                >)
+            </p>
+        </ProjectTile>
+        <ProjectTile
+            link="https://github.com/TheTinkerersHaven/RestaurantSimulator26"
+            name="Restaurant Simulator 26"
+            madeWith="Java"
+            madeFor="School"
+            madeForLink="https://maxplanck.edu.it"
+            style={{ "--delay": "0.5s" }}
+        >
+            <p slot="description">
+                Java Swing-based GUI restaurant simulator (in collaboration with
+                <span class="tooltip"
+                    ><a href="https://github.com/Fleny113">@Fleny113</a><span
+                        class="tooltiptext"
+                        >did i already tell you he's a cool guy?</span
+                    ></span
+                >)
+            </p>
+        </ProjectTile>
+        <ProjectTile
+            link="https://github.com/TheTinkerersHaven/SpinKeys-Hackpad"
+            name="SpinKeys"
+            madeWith="KiCad, Vial"
+            madeFor="Hack Club Blueprint"
+            madeForLink="https://hackclub.com"
+            style={{ "--delay": "0.6s" }}
+        >
+            <p slot="description">
+                5-key hackpad with two dials made for Hack Club Blueprint.
+            </p>
+        </ProjectTile>
+        <ProjectTile
+            link="https://github.com/TheTinkerersHaven/TerraLevel"
+            name="TerraLevel"
+            madeWith="Godot"
+            madeFor="Hack Club Daydream"
+            madeForLink="https://hackclub.com"
+            style={{ "--delay": "0.7s" }}
+        >
+            <p slot="description">
+                Platformer tower-climb game made for Hack Club Daydream.
+            </p>
+        </ProjectTile>
+        <ProjectTile
+            link="https://github.com/TheTinkerersHaven/CitySim"
+            name="CitySim"
+            madeWith="C++"
+            madeFor="School"
+            madeForLink="https://maxplanck.edu.it"
+            style={{ "--delay": "0.8s" }}
+        >
+            <p slot="description">
+                Simple TUI-based city simulator (in collaboration with
+                <span class="tooltip"
+                    ><a href="https://github.com/Fleny113">@Fleny113</a><span
+                        class="tooltiptext">cool guy pt.2</span
+                    ></span
+                >)
+            </p>
+        </ProjectTile>
+        <ProjectTile
+            link="https://github.com/TheTinkerersHaven/Encodechet"
+            name="Encodechet"
+            madeWith="Rust"
+            madeFor="Myself"
+            style={{ "--delay": "0.9s" }}
+        >
+            <p slot="description">
+                A useless encoder/decoder for text files in the custom .edch
+                format, now rewritten in Rust! (in collaboration with
+                <span class="tooltip"
+                    ><a href="https://github.com/Fleny113">@Fleny113</a><span
+                        class="tooltiptext"
+                        >co-wrote the original Python version</span
+                    ></span
+                >)
+            </p>
+        </ProjectTile>
     </div>
 </PanelLayout>
 
@@ -99,7 +159,8 @@ import PanelLayout from "../wrappers/PanelLayout.astro";
     }
 
     .fade-in.visible {
-        animation: projectFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) var(--delay) both;
+        animation: projectFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) var(--delay)
+            both;
     }
 
     @keyframes projectFadeIn {
@@ -126,115 +187,16 @@ import PanelLayout from "../wrappers/PanelLayout.astro";
         }
     }
 
-    table {
-        width: 100%;
-        max-width: 65vw;
-        margin: 0 auto;
-        border-collapse: separate;
-        border-spacing: 0;
-        font-family: var(--font-paragraph), sans-serif;
-        font-size: clamp(1rem, 2.5vw, 1.25rem);
-        text-wrap: balance;
+    #projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
     }
 
-    th,
-    td {
-        padding: 0.75rem 1rem;
-        border: 5px solid var(--table-border-color);
-        border-right: none;
-        border-bottom: none;
-    }
-
-    th:first-child {
-        border-top-left-radius: 12px;
-    }
-    th:last-child {
-        border-top-right-radius: 12px;
-    }
-    th:last-child,
-    td:last-child {
-        border-right: 5px solid var(--table-border-color);
-    }
-
-    tr:last-child td:first-child {
-        border-bottom-left-radius: 12px;
-    }
-    tr:last-child td:last-child {
-        border-bottom-right-radius: 12px;
-    }
-    tr:last-child th,
-    tr:last-child td {
-        border-bottom: 5px solid var(--table-border-color);
-    }
-
-    #projects {
-        overflow-x: auto;
-    }
-
-    @media (max-width: 1245px) {
-        table {
-            max-width: 100%;
-        }
-
-        tr:first-child {
-            display: none;
-        }
-
-        tr {
-            display: block;
-            margin-bottom: 1rem;
-            border: 1px solid var(--table-border-color);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        td {
-            display: block;
-            padding: 0.6rem 0.75rem;
-            border: none;
-            text-align: left;
-            font-size: 0.9rem;
-            border-bottom: 1px solid var(--table-border-color);
-        }
-
-        /* td:not(:last-child) {
-                        border-bottom: 1px solid var(--table-border-color);
-                    } */
-
-        td::before {
-            display: block;
-            font-weight: 700;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 0.15rem;
-        }
-
-        td:nth-child(1)::before {
-            content: "Name";
-        }
-        td:nth-child(2)::before {
-            content: "Description";
-        }
-        td:nth-child(3)::before {
-            content: "Made for";
-        }
-        td:nth-child(4)::before {
-            content: "Using";
-        }
-
-        td:last-child {
-            border-right: none;
-            border-bottom: none;
-        }
-
-        tr:last-child td {
-            border-bottom: 1px solid var(--table-border-color);
-        }
-
-        tr:last-child td:last-child {
-            border-bottom: none;
+    @media (max-width: 768px) {
+        #projects-grid {
+            grid-template-columns: 1fr;
         }
     }
 </style>

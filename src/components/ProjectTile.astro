@@ -1,0 +1,130 @@
+---
+interface Props {
+    link: string;
+    name: string;
+    madeWith: string;
+    madeFor: string;
+    madeForLink?: string;
+    wide?: boolean;
+    style?: string | Record<string, string>;
+}
+
+const { link, name, madeWith, madeFor, madeForLink, wide = false, style } = Astro.props;
+---
+
+<div class="tile fade-in" class:list={{ wide }} style={style}>
+    <h3><a href={link}>{name}</a></h3>
+    <p class="description"><slot name="description" /></p>
+    
+    <!-- Hidden detail revealed smoothly on hover -->
+    <div class="more-info">
+        <p class="made-for">
+            Made for: {madeForLink ? <a href={madeForLink}>{madeFor}</a> : madeFor}
+        </p>
+        <p class="made-with">Made with: {madeWith}</p>
+    </div>
+</div>
+
+<style>
+    .tile {
+        position: relative;
+        background-color: rgba(20, 20, 20, 0.5); /* Fixed rgb() to rgba() syntax */
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
+    }
+
+    .tile:hover {
+        transform: scale(1.05);
+        background-color: rgba(101, 19, 84, 0.8); /* Fixed rgb() to rgba() syntax */
+        z-index: 10; /* Keeps scaled tile layered above surrounding grid items */
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .wide {
+        grid-column: span 2;
+    }
+
+    @media (max-width: 768px) {
+        .wide {
+            grid-column: span 1;
+        }
+    }
+
+
+    /* Hidden content container */
+    .more-info {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: backdrop-filter 0.3s ease, opacity 0.3s ease, max-height 0.3s ease, margin-top 0.3s ease;
+    }
+
+    /* Reveal extra info when tile is hovered */
+    .tile:hover .more-info {
+        opacity: 1;
+        max-height: 70px;
+        margin-top: 0.5rem;
+    }
+
+    h3 {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        margin: 0.25rem 0;
+    }
+
+    .description {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+    }
+
+    .made-for {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .made-with {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #61afef; /* Optional highlight color for tech stack */
+    }
+
+    .fade-in {
+        opacity: 0;
+        filter: blur(6px);
+        transform: translateY(30px);
+    }
+
+    .fade-in.visible {
+        animation: tileFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) var(--delay) both;
+    }
+
+    @keyframes tileFadeIn {
+        from {
+            opacity: 0;
+            filter: blur(6px);
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .fade-in {
+            opacity: 1;
+            filter: none;
+            transform: none;
+        }
+        .fade-in.visible {
+            animation: none;
+        }
+    }
+</style>

@@ -23,7 +23,7 @@ export default defineConfig({
     ],
     server: {
         host: true,
-        allowedHosts: ["prodesk", "vitedev.gregweb.it.eu.org"],
+        allowedHosts: ["prodesk", "elitebook", "vitedev.gregweb.it.eu.org"],
     },
     integrations: [icon()],
     build: {

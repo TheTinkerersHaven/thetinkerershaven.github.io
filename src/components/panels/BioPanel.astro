@@ -6,7 +6,7 @@ import PanelLayout from "../wrappers/PanelLayout.astro";
 ---
 
 <PanelLayout data-panel="2" id="bio">
-    <div class="fade-in" style="--delay: 0.1s">
+    <div class="fade-in pfp-image" style="--delay: 0.1s">
         <Picture
             src={ProfilePic}
             alt="Greg PFP"
@@ -53,6 +53,14 @@ import PanelLayout from "../wrappers/PanelLayout.astro";
         max-width: 300px;
         height: auto;
         border-radius: 30px;
+
+        /* believe it or not, this is how you animate the hover exit */
+        transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    img:hover {
+        transform: scale(1.1) rotate(3deg);
+        transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
     }
 
     .fade-in {
