@@ -20,7 +20,7 @@ import bgloopfallback from "../../assets/bgloopfallback.mp4";
 <script>
     const template = document.querySelector<HTMLTemplateElement>("#video-template");
 
-    if (template && HTMLVideoElement) {
+    if (template) {
         const canPlay = document.createElement("video").canPlayType("video/mp4");
 
         if (canPlay !== "") {

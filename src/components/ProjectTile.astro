@@ -33,9 +33,7 @@ const techs = madeWith.split(" & ").map((t) => t.trim());
 
     <div class="more-info">
         <div class="separator" />
-        <p class="made-for">
-            Made for {madeForLink ? <a href={madeForLink}>{madeFor}</a> : madeFor}
-        </p>
+        <p class="made-for">Made for {madeForLink ? <a href={madeForLink}>{madeFor}</a> : madeFor}</p>
         <p class="made-with">
             Using
             {techs.map((tech, i) => (
@@ -56,7 +54,10 @@ const techs = madeWith.split(" & ").map((t) => t.trim());
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         cursor: pointer;
-        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            background-color 0.3s ease;
     }
 
     .tile-title a {
@@ -89,7 +90,9 @@ const techs = madeWith.split(" & ").map((t) => t.trim());
         opacity: 0;
         max-height: 0;
         overflow: hidden;
-        transition: opacity 0.3s ease, max-height 0.5s ease;
+        transition:
+            opacity 0.3s ease,
+            max-height 0.5s ease;
     }
 
     .tile:hover .more-info {
@@ -121,39 +124,5 @@ const techs = madeWith.split(" & ").map((t) => t.trim());
     .made-with {
         font-size: 0.8rem;
         font-weight: 600;
-    }
-
-    .fade-in {
-        opacity: 0;
-        filter: blur(6px);
-        transform: translateY(30px);
-    }
-
-    .fade-in.visible {
-        animation: tileFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) var(--delay) both;
-    }
-
-    @keyframes tileFadeIn {
-        from {
-            opacity: 0;
-            filter: blur(6px);
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            filter: blur(0);
-            transform: translateY(0);
-        }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .fade-in {
-            opacity: 1;
-            filter: none;
-            transform: none;
-        }
-        .fade-in.visible {
-            animation: none;
-        }
     }
 </style>

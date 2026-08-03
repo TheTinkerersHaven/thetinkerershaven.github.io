@@ -4,5 +4,3 @@ allowBuilds:
 minimumReleaseAgeExclude:
   - '@astrojs/markdown-satteri@0.3.1'
   - astro@7.0.0
-# patchedDependencies:
-#   '@astroanimate/core': patches/@astroanimate__core.patch

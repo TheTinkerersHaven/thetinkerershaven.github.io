@@ -1,13 +1,11 @@
 ---
-import PanelLayout from "../wrappers/PanelLayout.astro";
 import ProjectTile from "../ProjectTile.astro";
+import PanelLayout from "../wrappers/PanelLayout.astro";
 ---
 
 <PanelLayout data-panel="3">
     <h2 class="fade-in" style="--delay: 0.1s">My projects</h2>
-    <p class="fade-in" style="--delay: 0.2s">
-        These are some of the projects I've worked on:
-    </p>
+    <p class="fade-in" style="--delay: 0.2s">These are some of the projects I've worked on:</p>
     <div class="fade-in" id="projects-grid" style="--delay: 0.3s">
         <ProjectTile
             link="https://github.com/TheTinkerersHaven/minichat"
@@ -19,8 +17,8 @@ import ProjectTile from "../ProjectTile.astro";
             style={{ "--delay": "0.1s" }}
         >
             <p class="description" slot="description">
-                A Flutter chat client for LLMs with OpenAI-compatible APIs,
-                featuring local speech recognition via Whisper.
+                A Flutter chat client for LLMs with OpenAI-compatible APIs, featuring local speech recognition via
+                Whisper.
             </p>
         </ProjectTile>
         <ProjectTile
@@ -32,8 +30,7 @@ import ProjectTile from "../ProjectTile.astro";
             style={{ "--delay": "0.2s" }}
         >
             <p class="description" slot="description">
-                This exact website! First written in Svelte, and then remade
-                into what it is now.
+                This exact website! First written in Svelte, and then remade into what it is now.
             </p>
         </ProjectTile>
         <ProjectTile
@@ -45,8 +42,7 @@ import ProjectTile from "../ProjectTile.astro";
             style={{ "--delay": "0.3s" }}
         >
             <p class="description" slot="description">
-                Website for Planck Team (FIRST Lego League &amp; FIRST Tech
-                Challenge)
+                Website for Planck Team (FIRST Lego League &amp; FIRST Tech Challenge)
             </p>
         </ProjectTile>
         <ProjectTile
@@ -58,12 +54,9 @@ import ProjectTile from "../ProjectTile.astro";
             style={{ "--delay": "0.4s" }}
         >
             <p class="description" slot="description">
-                Archeology app, innovation project for Planck Team (FIRST Lego
-                League 2025-2026) (in collaboration with
+                Archeology app, innovation project for Planck Team (FIRST Lego League 2025-2026) (in collaboration with
                 <span class="tooltip"
-                    ><a href="https://github.com/Fleny113">@Fleny113</a><span
-                        class="tooltiptext">cool guy</span
-                    ></span
+                    ><a href="https://github.com/Fleny113">@Fleny113</a><span class="tooltiptext">cool guy</span></span
                 >)
             </p>
         </ProjectTile>
@@ -78,10 +71,8 @@ import ProjectTile from "../ProjectTile.astro";
             <p class="description" slot="description">
                 Java Swing-based GUI restaurant simulator (in collaboration with
                 <span class="tooltip"
-                    ><a href="https://github.com/Fleny113">@Fleny113</a><span
-                        class="tooltiptext"
-                        >did i already tell you he's a cool guy?</span
-                    ></span
+                    ><a href="https://github.com/Fleny113">@Fleny113</a
+                    ><span class="tooltiptext">did i already tell you he's a cool guy?</span></span
                 >)
             </p>
         </ProjectTile>
@@ -93,9 +84,7 @@ import ProjectTile from "../ProjectTile.astro";
             madeForLink="https://hackclub.com"
             style={{ "--delay": "0.6s" }}
         >
-            <p class="description" slot="description">
-                5-key hackpad with two dials made for Hack Club Blueprint.
-            </p>
+            <p class="description" slot="description">5-key hackpad with two dials made for Hack Club Blueprint.</p>
         </ProjectTile>
         <ProjectTile
             link="https://github.com/TheTinkerersHaven/TerraLevel"
@@ -105,9 +94,7 @@ import ProjectTile from "../ProjectTile.astro";
             madeForLink="https://hackclub.com"
             style={{ "--delay": "0.7s" }}
         >
-            <p class="description" slot="description">
-                Platformer tower-climb game made for Hack Club Daydream.
-            </p>
+            <p class="description" slot="description">Platformer tower-climb game made for Hack Club Daydream.</p>
         </ProjectTile>
         <ProjectTile
             link="https://github.com/TheTinkerersHaven/CitySim"
@@ -120,9 +107,8 @@ import ProjectTile from "../ProjectTile.astro";
             <p class="description" slot="description">
                 Simple TUI-based city simulator (in collaboration with
                 <span class="tooltip"
-                    ><a href="https://github.com/Fleny113">@Fleny113</a><span
-                        class="tooltiptext">cool guy pt.2</span
-                    ></span
+                    ><a href="https://github.com/Fleny113">@Fleny113</a
+                    ><span class="tooltiptext">cool guy pt.2</span></span
                 >)
             </p>
         </ProjectTile>
@@ -134,13 +120,11 @@ import ProjectTile from "../ProjectTile.astro";
             style={{ "--delay": "0.9s" }}
         >
             <p class="description" slot="description">
-                A useless encoder/decoder for text files in the custom .edch
-                format, now rewritten in Rust! (in collaboration with
+                A useless encoder/decoder for text files in the custom .edch format, now rewritten in Rust! (in
+                collaboration with
                 <span class="tooltip"
-                    ><a href="https://github.com/Fleny113">@Fleny113</a><span
-                        class="tooltiptext"
-                        >co-wrote the original Python version</span
-                    ></span
+                    ><a href="https://github.com/Fleny113">@Fleny113</a
+                    ><span class="tooltiptext">co-wrote the original Python version</span></span
                 >)
             </p>
         </ProjectTile>
@@ -150,41 +134,6 @@ import ProjectTile from "../ProjectTile.astro";
 <style>
     :root {
         --table-border-color: #ffffff50;
-    }
-
-    .fade-in {
-        opacity: 0;
-        filter: blur(6px);
-        transform: translateY(30px);
-    }
-
-    .fade-in.visible {
-        animation: projectFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) var(--delay)
-            both;
-    }
-
-    @keyframes projectFadeIn {
-        from {
-            opacity: 0;
-            filter: blur(6px);
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            filter: blur(0);
-            transform: translateY(0);
-        }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .fade-in {
-            opacity: 1;
-            filter: none;
-            transform: none;
-        }
-        .fade-in.visible {
-            animation: none;
-        }
     }
 
     #projects-grid {
