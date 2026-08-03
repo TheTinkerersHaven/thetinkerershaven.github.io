@@ -12,7 +12,7 @@ export default defineConfig({
         },
         {
             provider: fontProviders.fontsource(),
-            name: "Roboto Mono",
+            name: "JetBrains Mono",
             cssVariable: "--font-paragraph",
         },
         {
@@ -20,6 +20,11 @@ export default defineConfig({
             name: "Playwrite IE",
             cssVariable: "--font-heading",
         },
+        {
+            provider: fontProviders.fontsource(),
+            name: "Lacquer",
+            cssVariable: "--font-card-title",
+        }
     ],
     server: {
         host: true,

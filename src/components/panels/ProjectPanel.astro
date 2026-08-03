@@ -18,7 +18,7 @@ import ProjectTile from "../ProjectTile.astro";
             wide
             style={{ "--delay": "0.1s" }}
         >
-            <p slot="description">
+            <p class="description" slot="description">
                 A Flutter chat client for LLMs with OpenAI-compatible APIs,
                 featuring local speech recognition via Whisper.
             </p>
@@ -31,7 +31,7 @@ import ProjectTile from "../ProjectTile.astro";
             wide
             style={{ "--delay": "0.2s" }}
         >
-            <p slot="description">
+            <p class="description" slot="description">
                 This exact website! First written in Svelte, and then remade
                 into what it is now.
             </p>
@@ -44,7 +44,7 @@ import ProjectTile from "../ProjectTile.astro";
             madeForLink="https://planckteam.github.io"
             style={{ "--delay": "0.3s" }}
         >
-            <p slot="description">
+            <p class="description" slot="description">
                 Website for Planck Team (FIRST Lego League &amp; FIRST Tech
                 Challenge)
             </p>
@@ -57,7 +57,7 @@ import ProjectTile from "../ProjectTile.astro";
             madeForLink="https://planckteam.github.io"
             style={{ "--delay": "0.4s" }}
         >
-            <p slot="description">
+            <p class="description" slot="description">
                 Archeology app, innovation project for Planck Team (FIRST Lego
                 League 2025-2026) (in collaboration with
                 <span class="tooltip"
@@ -75,7 +75,7 @@ import ProjectTile from "../ProjectTile.astro";
             madeForLink="https://maxplanck.edu.it"
             style={{ "--delay": "0.5s" }}
         >
-            <p slot="description">
+            <p class="description" slot="description">
                 Java Swing-based GUI restaurant simulator (in collaboration with
                 <span class="tooltip"
                     ><a href="https://github.com/Fleny113">@Fleny113</a><span
@@ -88,12 +88,12 @@ import ProjectTile from "../ProjectTile.astro";
         <ProjectTile
             link="https://github.com/TheTinkerersHaven/SpinKeys-Hackpad"
             name="SpinKeys"
-            madeWith="KiCad, Vial"
+            madeWith="KiCad & Vial"
             madeFor="Hack Club Blueprint"
             madeForLink="https://hackclub.com"
             style={{ "--delay": "0.6s" }}
         >
-            <p slot="description">
+            <p class="description" slot="description">
                 5-key hackpad with two dials made for Hack Club Blueprint.
             </p>
         </ProjectTile>
@@ -105,7 +105,7 @@ import ProjectTile from "../ProjectTile.astro";
             madeForLink="https://hackclub.com"
             style={{ "--delay": "0.7s" }}
         >
-            <p slot="description">
+            <p class="description" slot="description">
                 Platformer tower-climb game made for Hack Club Daydream.
             </p>
         </ProjectTile>
@@ -117,7 +117,7 @@ import ProjectTile from "../ProjectTile.astro";
             madeForLink="https://maxplanck.edu.it"
             style={{ "--delay": "0.8s" }}
         >
-            <p slot="description">
+            <p class="description" slot="description">
                 Simple TUI-based city simulator (in collaboration with
                 <span class="tooltip"
                     ><a href="https://github.com/Fleny113">@Fleny113</a><span
@@ -133,7 +133,7 @@ import ProjectTile from "../ProjectTile.astro";
             madeFor="Myself"
             style={{ "--delay": "0.9s" }}
         >
-            <p slot="description">
+            <p class="description" slot="description">
                 A useless encoder/decoder for text files in the custom .edch
                 format, now rewritten in Rust! (in collaboration with
                 <span class="tooltip"
@@ -198,5 +198,11 @@ import ProjectTile from "../ProjectTile.astro";
         #projects-grid {
             grid-template-columns: 1fr;
         }
+    }
+
+    .description {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+        margin: 0.2rem 0;
     }
 </style>

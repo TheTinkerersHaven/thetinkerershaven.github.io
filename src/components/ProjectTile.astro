@@ -10,36 +10,68 @@ interface Props {
 }
 
 const { link, name, madeWith, madeFor, madeForLink, wide = false, style } = Astro.props;
+
+const techColors: Record<string, string> = {
+    Astro: "#ff5d01",
+    "Expo (React Native)": "#06d1f2",
+    Expo: "#06d1f2",
+    Godot: "#5a9fd0",
+    KiCad: "#3dd4c0",
+    Vial: "#c084fc",
+    "C++": "#6aafff",
+    Java: "#ff9724",
+    Rust: "#f74c00",
+    Flutter: "#42a5f5",
+};
+
+const techs = madeWith.split(" & ").map((t) => t.trim());
 ---
 
 <div class="tile fade-in" class:list={{ wide }} style={style}>
-    <h3><a href={link}>{name}</a></h3>
-    <p class="description"><slot name="description" /></p>
-    
-    <!-- Hidden detail revealed smoothly on hover -->
+    <h3 class="tile-title"><a href={link}>{name}</a></h3>
+    <slot name="description" />
+
     <div class="more-info">
+        <div class="separator" />
         <p class="made-for">
-            Made for: {madeForLink ? <a href={madeForLink}>{madeFor}</a> : madeFor}
+            Made for {madeForLink ? <a href={madeForLink}>{madeFor}</a> : madeFor}
         </p>
-        <p class="made-with">Made with: {madeWith}</p>
+        <p class="made-with">
+            Using
+            {techs.map((tech, i) => (
+                <>
+                    {i > 0 && " & "}
+                    <span style={{ color: techColors[tech] ?? "#61afef" }}>{tech}</span>
+                </>
+            ))}
+        </p>
     </div>
 </div>
 
 <style>
     .tile {
         position: relative;
-        background-color: rgba(20, 20, 20, 0.5); /* Fixed rgb() to rgba() syntax */
+        background-color: rgba(20, 20, 20, 0.5);
         padding: 1rem;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         cursor: pointer;
-        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+
+    .tile-title a {
+        font-family: var(--font-card-title);
+        font-size: 1.7rem;
+        font-weight: normal;
+        max-width: 100%;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
 
     .tile:hover {
         transform: scale(1.05);
-        background-color: rgba(101, 19, 84, 0.8); /* Fixed rgb() to rgba() syntax */
-        z-index: 10; /* Keeps scaled tile layered above surrounding grid items */
+        background-color: rgba(101, 19, 84, 0.8);
+        z-index: 10;
         box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
     }
 
@@ -47,26 +79,22 @@ const { link, name, madeWith, madeFor, madeForLink, wide = false, style } = Astr
         grid-column: span 2;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1600px) {
         .wide {
             grid-column: span 1;
         }
     }
 
-
-    /* Hidden content container */
     .more-info {
         opacity: 0;
         max-height: 0;
         overflow: hidden;
-        transition: backdrop-filter 0.3s ease, opacity 0.3s ease, max-height 0.3s ease, margin-top 0.3s ease;
+        transition: opacity 0.3s ease, max-height 0.5s ease;
     }
 
-    /* Reveal extra info when tile is hovered */
     .tile:hover .more-info {
         opacity: 1;
-        max-height: 70px;
-        margin-top: 0.5rem;
+        max-height: 150px;
     }
 
     h3 {
@@ -75,12 +103,14 @@ const { link, name, madeWith, madeFor, madeForLink, wide = false, style } = Astr
     }
 
     p {
-        margin: 0.25rem 0;
+        margin: 0.2rem 0;
     }
 
-    .description {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 0.9rem;
+    .separator {
+        width: 100%;
+        height: 1px;
+        background-color: var(--table-border-color);
+        margin: 0.5rem 0;
     }
 
     .made-for {
@@ -91,7 +121,6 @@ const { link, name, madeWith, madeFor, madeForLink, wide = false, style } = Astr
     .made-with {
         font-size: 0.8rem;
         font-weight: 600;
-        color: #61afef; /* Optional highlight color for tech stack */
     }
 
     .fade-in {
