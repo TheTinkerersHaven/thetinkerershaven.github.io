@@ -24,7 +24,7 @@ export default defineConfig({
             provider: fontProviders.fontsource(),
             name: "Lacquer",
             cssVariable: "--font-card-title",
-        }
+        },
     ],
     server: {
         host: true,

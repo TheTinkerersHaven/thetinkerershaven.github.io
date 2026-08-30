@@ -5,7 +5,7 @@
   "scripts": {
     "astro": "astro",
     "build": "astro build",
-    "check": "biome check",
+    "check": "astro check; biome check",
     "check:fix": "biome check --write",
     "check:fixall": "biome check --write --unsafe",
     "dev": "astro dev",
@@ -16,9 +16,11 @@
     "astro-icon": "^1.2.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "@biomejs/biome": "2.5.10",
     "@iconify-json/mdi": "^1.2.3",
-    "sharp": "^0.35.4"
+    "sharp": "^0.35.4",
+    "typescript": "^6.0.3"
   },
   "engines": {
     "node": ">=22.12.0"
