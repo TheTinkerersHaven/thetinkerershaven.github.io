@@ -1,4 +1,6 @@
 ---
+import { techColors } from "../data/projects";
+
 interface Props {
     link: string;
     name: string;
@@ -10,19 +12,6 @@ interface Props {
 }
 
 const { link, name, madeWith, madeFor, madeForLink, wide = false, style } = Astro.props;
-
-const techColors: Record<string, string> = {
-    Astro: "#ff5d01",
-    "Expo (React Native)": "#06d1f2",
-    Expo: "#06d1f2",
-    Godot: "#5a9fd0",
-    KiCad: "#3dd4c0",
-    Vial: "#c084fc",
-    "C++": "#6aafff",
-    Java: "#ff9724",
-    Rust: "#f74c00",
-    Flutter: "#42a5f5",
-};
 
 const techs = madeWith.split(" & ").map((t) => t.trim());
 ---

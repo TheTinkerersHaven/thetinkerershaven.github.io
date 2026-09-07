@@ -1,5 +1,6 @@
 ---
 import CommonHead from "../components/CommonHead.astro";
+import "../styles/global.css";
 ---
 
 <!doctype html>
@@ -19,17 +20,17 @@ import CommonHead from "../components/CommonHead.astro";
 </html>
 
 <script>
+    document.documentElement.classList.add("js");
     interface RgbColor {
         r: number;
         g: number;
         b: number;
     }
 
-    function readColor(varName: string): RgbColor {
-        const val = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+    const parseColor = (val: string): RgbColor => {
         const [r, g, b] = val.split(" ").map(Number);
         return { r, g, b };
-    }
+    };
 
     const lerp = (a: number, b: number, t: number): number => a + (b - a) * t;
     const clamp01 = (v: number): number => Math.max(0, Math.min(1, v));
@@ -43,13 +44,8 @@ import CommonHead from "../components/CommonHead.astro";
     }
 
     function initScrollColors(): void {
-        const colors: RgbColor[] = [
-            readColor("--biopanel-rgb"),
-            readColor("--projectpanel-rgb"),
-            readColor("--hobbypanel-rgb"),
-            readColor("--socialpanel-rgb"),
-        ];
-        const panels: NodeListOf<HTMLElement> = document.querySelectorAll("[data-panel]");
+        const panels = document.querySelectorAll<HTMLElement>("[data-panel]");
+        const colors = Array.from(panels, (el) => parseColor(el.dataset.bg ?? "30 50 120"));
 
         function onScroll(): void {
             const scrollY: number = window.scrollY;
@@ -107,11 +103,7 @@ import CommonHead from "../components/CommonHead.astro";
     }
 
     :root {
-        --biopanel-rgb: 30 50 120;
-        --projectpanel-rgb: 60 30 100;
-        --hobbypanel-rgb: 120 60 150;
-        --socialpanel-rgb: 150 100 50;
-        --panels-bg-rgb: var(--biopanel-rgb);
+        --panels-bg-rgb: 30 50 120;
     }
 
     body {

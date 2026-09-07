@@ -9,11 +9,11 @@ import bgloopfallback from "../../assets/bgloopfallback.mp4";
         <source src={bgloopfallback} type="video/mp4">
     </video>
 </template>
-<div class="center-container">
+<div class="center-container" id="top">
     <div class="welcome-tile">
         <h1>The Tinkerer's Website</h1>
         <p>Have a look inside.</p>
-        <button type="button" onclick="window.location.href='#bio'">Jump in</button>
+        <a class="jump-in" href="#bio">Jump in</a>
     </div>
 </div>
 
@@ -100,31 +100,21 @@ import bgloopfallback from "../../assets/bgloopfallback.mp4";
             font-size: clamp(1rem, 2.5vw, 1.25rem);
         }
 
-        button {
+        .jump-in {
             padding: 0.6rem 1rem;
             border: 0;
             border-radius: 8px;
             background: #7b0d91;
             color: white;
+            font-family: var(--font-paragraph), sans-serif;
             font-weight: 600;
             cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
 
             &:hover {
                 background: #7b0d91cc;
             }
-        }
-    }
-</style>
-
-<style is:global>
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
         }
     }
 </style>

@@ -1,0 +1,92 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.tooltip {
+    position: relative;
+    cursor: help;
+    color: var(--link-color);
+}
+
+.tooltiptext {
+    display: block;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    translate: -50% 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-family: var(--font-paragraph, sans-serif);
+    white-space: normal;
+    width: max-content;
+    max-width: 50vw;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 150ms ease;
+}
+
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    translate: -50% 0;
+    border: 5px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.85);
+}
+
+.tooltip:hover .tooltiptext {
+    opacity: 1;
+}
+
+html.js .fade-in {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(30px);
+}
+
+.fade-in.visible {
+    animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) var(--delay) both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        filter: blur(6px);
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    .fade-in {
+        opacity: 1;
+        filter: none;
+        transform: none;
+    }
+    .fade-in.visible {
+        animation: none;
+    }
+}

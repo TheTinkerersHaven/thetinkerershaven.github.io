@@ -1,4 +1,19 @@
-<div class="panel" {...Astro.props}>
+---
+export interface Props {
+    id?: string;
+    class?: string;
+    "data-panel"?: boolean | "";
+    "data-bg"?: string;
+}
+---
+
+<div
+    class="panel"
+    id={Astro.props.id}
+    data-panel={Astro.props["data-panel"] ?? undefined}
+    data-bg={Astro.props["data-bg"]}
+    class:list={[Astro.props.class]}
+>
     <div class="content-tile">
         <slot />
     </div>
@@ -53,83 +68,6 @@
     @media (max-width: 768px) {
         .content-tile {
             max-width: 95vw;
-        }
-    }
-</style>
-
-<style is:global>
-    .tooltip {
-        position: relative;
-        cursor: help;
-        color: var(--link-color);
-    }
-
-    .tooltiptext {
-        display: block;
-        position: absolute;
-        bottom: calc(100% + 8px);
-        left: 50%;
-        translate: -50% 0;
-        background: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(4px);
-        color: #fff;
-        padding: 0.4rem 0.75rem;
-        border-radius: 6px;
-        font-size: 0.8rem;
-        font-family: var(--font-paragraph, sans-serif);
-        white-space: normal;
-        width: max-content;
-        max-width: 50vw;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 150ms ease;
-    }
-
-    .tooltiptext::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        translate: -50% 0;
-        border: 5px solid transparent;
-        border-top-color: rgba(0, 0, 0, 0.85);
-    }
-
-    .tooltip:hover .tooltiptext {
-        opacity: 1;
-    }
-
-    .fade-in {
-        opacity: 0;
-        filter: blur(6px);
-        transform: translateY(30px);
-    }
-
-    .fade-in.visible {
-        animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) var(--delay) both;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            filter: blur(6px);
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            filter: blur(0);
-            transform: translateY(0);
-        }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .fade-in {
-            opacity: 1;
-            filter: none;
-            transform: none;
-        }
-        .fade-in.visible {
-            animation: none;
         }
     }
 </style>
